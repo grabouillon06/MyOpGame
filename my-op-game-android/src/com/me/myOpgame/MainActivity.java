@@ -1,4 +1,4 @@
-package com.me.myOpgame;
+package com.me.myopgame;
 
 import android.os.Bundle;
 
