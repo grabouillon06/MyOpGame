@@ -7,11 +7,9 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class MyActor2 extends Actor {
 	
-	SpriteBatch batch;
 	public Texture texture;
 	
 	public MyActor2() {	
-        batch = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("data/crtPanel_1024_128.png"));
 	}
 	

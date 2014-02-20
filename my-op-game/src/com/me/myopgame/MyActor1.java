@@ -8,13 +8,11 @@ import com.badlogic.gdx.utils.Array;
 
 public class MyActor1 extends Actor {
 
-	SpriteBatch batch;
 	Texture texture;
 	Texture blackMarkerTexture;
 	Texture yelloCameraMinimapTexture;
 	
 	public MyActor1() {
-        this.batch = new SpriteBatch();
         this.texture = new Texture(Gdx.files.internal("data/pinkBg_256_128.png"));
         this.blackMarkerTexture = new Texture(Gdx.files.internal("data/blackActor0_2_2.png"));
         this.yelloCameraMinimapTexture = new Texture(Gdx.files.internal("data/yelloCameraMinimap_32_16.png"));
@@ -29,8 +27,8 @@ public class MyActor1 extends Actor {
 
         // draw application window in minimap
 		batch.draw(	this.yelloCameraMinimapTexture, 
-					this.getX() + (this.getStage().getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X)/MyOpGame.MY_MINIMAP_SCALE_FACTOR, 
-					this.getY() + (this.getStage().getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y)/MyOpGame.MY_MINIMAP_SCALE_FACTOR);
+					this.getX() + (this.getStage().getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X_IN_PIXELS)/MyOpGame.MY_MINIMAP_SCALE_FACTOR, 
+					this.getY() + (this.getStage().getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y_IN_PIXELS)/MyOpGame.MY_MINIMAP_SCALE_FACTOR);
         
         // retrieve and draw actors of type "actor0" from stage
     	Array<Actor> lvActorArray = this.getStage().getActors();
@@ -41,7 +39,7 @@ public class MyActor1 extends Actor {
     		{
     			batch.draw(	this.blackMarkerTexture, 
     						this.getX() + (lvActor.getX()/MyOpGame.MY_MINIMAP_SCALE_FACTOR),
-    						this.getY() + ((lvActor.getY() - MyOpGame.MY_MINIMAP_HEIGHT)/MyOpGame.MY_MINIMAP_SCALE_FACTOR));
+    						this.getY() + ((lvActor.getY() - MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS)/MyOpGame.MY_MINIMAP_SCALE_FACTOR));
     		}
     	}
     }

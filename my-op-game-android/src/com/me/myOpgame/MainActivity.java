@@ -1,4 +1,4 @@
-package com.me.myopgame;
+package com.me.myop2game;
 
 import android.os.Bundle;
 
@@ -13,6 +13,6 @@ public class MainActivity extends AndroidApplication {
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
         cfg.useGL20 = false;
         
-        initialize(new MyOpGame(), cfg);
+        initialize(new MyOp2Game(), cfg);
     }
 }

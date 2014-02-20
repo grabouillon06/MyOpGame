@@ -27,10 +27,10 @@ public class MyScreen0 implements Screen{
     protected MyActor1 actor1_0;
     protected MyActor2 actor2_0;
     
-    public MyScreen0(MyOpGame game) {
+    public MyScreen0(MyOpGame myOpGame) {
     	
         // link screen to game
-    	this.game = game;
+    	this.game = myOpGame;
     	
     	// allocate skin
     	skin = new Skin(Gdx.files.internal("ui/uiskin.json"));
@@ -39,19 +39,19 @@ public class MyScreen0 implements Screen{
         this.stage0 = new Stage( Gdx.graphics.getWidth(),Gdx.graphics.getHeight(), true );
         
         // allocate actor0_0 and add to stage
-        this.actor0_0 = new MyActor0();
-        this.actor0_0.setPosition(255*32, 127*32 + MyOpGame.MY_MINIMAP_HEIGHT);
+        this.actor0_0 = new MyActor0(this.stage0, 0*MyOpGame.MY_TILE_SIZE_IN_PIXELS, 0*MyOpGame.MY_TILE_SIZE_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS);
         this.stage0.addActor(this.actor0_0);
 
         // allocate actor0_1 and add to stage, actor1 is placed next to actor0
-        this.actor0_1 = new MyActor0();
-        this.actor0_1.setPosition(10*32, 15*32 + MyOpGame.MY_MINIMAP_HEIGHT);
+        this.actor0_1 = new MyActor0(this.stage0, 255*MyOpGame.MY_TILE_SIZE_IN_PIXELS, 127*MyOpGame.MY_TILE_SIZE_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS);
         this.stage0.addActor(this.actor0_1);
                 
         // allocate actor0_2 and add to stage, actor1 is placed next to actor0
-        this.actor0_2 = new MyActor0();
-        this.actor0_2.setPosition(54*32, 76*32 + MyOpGame.MY_MINIMAP_HEIGHT);
+        this.actor0_2 = new MyActor0(this.stage0,30*MyOpGame.MY_TILE_SIZE_IN_PIXELS,10*MyOpGame.MY_TILE_SIZE_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS);
         this.stage0.addActor(this.actor0_2);
+        
+        // set target for actor0_0
+        this.actor0_0.setTarget((int)(this.actor0_2.getX()),(int)(this.actor0_2.getY()));
                 
         // allocate actor2_0 and add to stage
         this.actor2_0 = new MyActor2();
@@ -86,7 +86,7 @@ public class MyScreen0 implements Screen{
     	int lvTranslateY = 0;
     	
 		// the following code clears the screen with the given RGB color (green)
-        Gdx.gl.glClearColor( 0f, 1f, 0f, 1f );
+        Gdx.gl.glClearColor( 0f, 0f, 1f, 1f );
         Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT );	
         
         // render orthogonal map once a map button has been pressed only
@@ -94,33 +94,36 @@ public class MyScreen0 implements Screen{
         {
         	renderer.setView((OrthographicCamera) this.stage0.getCamera());
         	renderer.render();
+        	
+        	//MapObjects value = renderer.getMap().getLayers().get("Object Layer 1").getObjects();
+        	//Gdx.app.log( MyOp2Game.LOG, Integer.toString(value.getCount()));
         }
         
         // check if mouse pressed
         if (Gdx.input.isTouched())
         {
         	// check click is inside the map, then check the direction to move screen
-        	if (MyOpGame.MY_APP_WINDOW_HEIGHT - Gdx.input.getY() >= MyOpGame.MY_MINIMAP_HEIGHT)
+        	if (MyOpGame.MY_APP_WINDOW_HEIGHT_IN_PIXELS - Gdx.input.getY() >= MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS)
         	{
-        		if (Gdx.input.getX() >= (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X * 1.15))
+        		if (Gdx.input.getX() >= (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X_IN_PIXELS * 1.15))
         		{
-        			if (this.stage0.getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X < MyOpGame.MY_WORLD_WIDTH - MyOpGame.MY_APP_WINDOW_WIDTH)
+        			if (this.stage0.getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X_IN_PIXELS < MyOpGame.MY_WORLD_WIDTH_IN_PIXELS - MyOpGame.MY_APP_WINDOW_WIDTH_IN_PIXELS)
         				lvTranslateX = 32;
         		}
-        		else if (Gdx.input.getX() < (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X * 0.85))
+        		else if (Gdx.input.getX() < (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X_IN_PIXELS * 0.85))
         		{
-        			if (this.stage0.getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X > 0)
+        			if (this.stage0.getCamera().position.x - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_X_IN_PIXELS > 0)
         				lvTranslateX = -32;
         		}
 
-        		if (MyOpGame.MY_APP_WINDOW_HEIGHT - Gdx.input.getY() >= MyOpGame.MY_MINIMAP_HEIGHT + (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y * 1.05))
+        		if (MyOpGame.MY_APP_WINDOW_HEIGHT_IN_PIXELS - Gdx.input.getY() >= MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS + (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y_IN_PIXELS * 1.05))
         		{
-        			if (this.stage0.getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y < MyOpGame.MY_WORLD_HEIGHT - MyOpGame.MY_APP_WINDOW_HEIGHT + MyOpGame.MY_MINIMAP_HEIGHT )
+        			if (this.stage0.getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y_IN_PIXELS < MyOpGame.MY_WORLD_HEIGHT_IN_PIXELS - MyOpGame.MY_APP_WINDOW_HEIGHT_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS )
         				lvTranslateY = 32;
         		}
-        		else if ((MyOpGame.MY_APP_WINDOW_HEIGHT - Gdx.input.getY() < (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y * 0.95)) &&(MyOpGame.MY_APP_WINDOW_HEIGHT - Gdx.input.getY() > MyOpGame.MY_MINIMAP_HEIGHT))
+        		else if ((MyOpGame.MY_APP_WINDOW_HEIGHT_IN_PIXELS - Gdx.input.getY() < (MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y_IN_PIXELS * 0.95)) &&(MyOpGame.MY_APP_WINDOW_HEIGHT_IN_PIXELS - Gdx.input.getY() > MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS))
         		{
-        			if (this.stage0.getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y > 0)
+        			if (this.stage0.getCamera().position.y - MyOpGame.MY_ORIGINAL_CAMERA_POSITION_Y_IN_PIXELS > 0)
         				lvTranslateY = -32;
         		}
         	}

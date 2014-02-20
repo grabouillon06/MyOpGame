@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="256" height="132" tilewidth="32" tileheight="32" backgroundcolor="#008080">
  <tileset firstgid="1" name="purpleGrid1" tilewidth="32" tileheight="32">
-  <image source="purpleTile_32_32.png" width="32" height="32"/>
+  <image source="purpleTileBlackBorder_32_32.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="damier4Couleurs0" tilewidth="32" tileheight="32">
+  <image source="damier4Couleurs0.png" width="128" height="128"/>
  </tileset>
  <layer name="Tile Layer 1" width="256" height="132">
   <data encoding="base64" compression="zlib">
    eJztwwENAAAMw6DOv+kLOSSsmqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqmoAAADABwcIpYAB
   </data>
  </layer>
+ <layer name="Tile Layer 2" width="256" height="132" opacity="0.5">
+  <data encoding="base64" compression="zlib">
+   eJzt0zERACAQwDAW/FtGATPcN1HQpWsBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMyyXwcAz/gfuvwP890+9z/M53/o8j90+R+6fA5d/ocu/0OX/6HL/9DlfwAAAAAA+M8BYIYAVg==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object x="512" y="3745" width="32" height="320"/>
+ </objectgroup>
 </map>
