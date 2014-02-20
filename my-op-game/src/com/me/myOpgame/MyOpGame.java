@@ -4,12 +4,15 @@ import com.badlogic.gdx.Game;
 
 public class MyOpGame extends Game {
 
-	public static int MY_APP_WINDOW_WIDTH = 512;
-	public static int MY_APP_WINDOW_HEIGHT = 512;
-	public static int MY_WORLD_WIDTH = 2048;
-	public static int MY_WORLD_HEIGHT = 2048;
+	public static final String MY_TITLE = "my-op1-game";
+	public static final String MY_VERSION = "0.0.0.0";
+	
+	public static int MY_WORLD_WIDTH = 8192;
+	public static int MY_WORLD_HEIGHT = 4096;
 	public static int MY_MINIMAP_WIDTH = 256;
-	public static int MY_MINIMAP_HEIGHT = 256;
+	public static int MY_MINIMAP_HEIGHT = 128;
+	public static int MY_APP_WINDOW_WIDTH = 1024;
+	public static int MY_APP_WINDOW_HEIGHT = 512 + MY_MINIMAP_HEIGHT;
 	public static int MY_MINIMAP_SCALE_FACTOR = MY_WORLD_WIDTH / MY_MINIMAP_WIDTH;
 	public static int MY_ORIGINAL_CAMERA_POSITION_X = MY_APP_WINDOW_WIDTH/2;
 	public static int MY_ORIGINAL_CAMERA_POSITION_Y = MY_APP_WINDOW_HEIGHT/2;
