@@ -10,27 +10,30 @@ public class MyAPathElement0 {
 	
 	public int state;
 	public Vector2 posInTiles;
-	public int G;
-	public int H;
-	public int F;
+	public float G;
+	public float H;
+	public float F;
+	public int I;
 	public MyAPathElement0 previous;
 	public MyAPathElement0 next;
+	public int weight;
 	
 	MyAPathElement0() {
 		this.posInTiles = new Vector2(-1,-1);
 		this.F = -1;
 		this.G = -1;
 		this.H = -1;
+		this.I = -1;
+		this.weight = 10;
 		this.next = null;
 		this.previous = null;
 		this.state = MyAPathElement0.A_PATH_ELEMENT_NEW;
 	}
 	
-    public int computeDistance(Vector2 v) {
-    	int x = (int) Math.sqrt((this.posInTiles.x - v.x)*(this.posInTiles.x - v.x));
-    	int y = (int) Math.sqrt((this.posInTiles.y - v.y)*(this.posInTiles.y - v.y));    	
-    	return (x + y);
+    public float computeDistanceTo(MyAPathElement0 elem) {
+    	float x2 = (float) ((this.posInTiles.x - elem.posInTiles.x)*(this.posInTiles.x - elem.posInTiles.x));
+    	float y2 = (float) ((this.posInTiles.y - elem.posInTiles.y)*(this.posInTiles.y - elem.posInTiles.y));    	
+    	return ((float)(Math.sqrt(x2 + y2)));
     }
-    
 
 }
