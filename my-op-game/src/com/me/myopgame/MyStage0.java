@@ -3,12 +3,9 @@ package com.me.myopgame;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class MyStage0 {
 	
@@ -123,23 +120,16 @@ public class MyStage0 {
     	this.actor0_0.reset();
     	return;
     }
+      
+    public void act(float delta) {
+    	this.stage0.act();  	
+    }
     
     public void render(float delta) {
     	
     	int lvTranslateX = 0;
     	int lvTranslateY = 0;
     	
-		// the following code clears the screen with the given RGB color (green)
-        Gdx.gl.glClearColor( 0f, 0f, 1f, 1f );
-        Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT );	
-        
-        // render orthogonal map once a map button has been pressed only
-        if (this.screen0.renderer != null)
-        {
-        	this.screen0.renderer.setView((OrthographicCamera) this.stage0.getCamera());
-        	this.screen0.renderer.render();
-        }
-        
         // check if mouse pressed
         if (Gdx.input.isTouched())
         {

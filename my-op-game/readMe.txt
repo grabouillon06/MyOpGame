@@ -30,8 +30,7 @@ purpose :
 -- added AStar class -> done
 - map visualization
 -- layer 2 and object layer are not visible
--- only info for discovered blocks are printed on the screen
---- manage discovered map
+-- only info for discovered blocks are printed on the screen -> done
 
 
 remarks :

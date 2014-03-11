@@ -2,6 +2,8 @@ package com.me.myopgame;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -29,6 +31,19 @@ public class MyScreen0 implements Screen{
     @Override
 	public void render(float delta) {
     	
+    	this.stage0.act(delta);
+    	
+		// the following code clears the screen with the given RGB color (green)
+        Gdx.gl.glClearColor( 0f, 0f, 1f, 1f );
+        Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT );	
+    	
+        // render orthogonal map once a map button has been pressed only
+        if (this.renderer != null)
+        {
+        	this.renderer.setView((OrthographicCamera) this.stage0.stage0.getCamera());
+        	this.renderer.render();
+        }
+
     	this.stage0.render(delta);
     }
 
@@ -62,5 +77,5 @@ public class MyScreen0 implements Screen{
 		this.stage0.dispose();
 		this.map.dispose();
 		this.renderer.dispose();
-	}
+	}	
 }

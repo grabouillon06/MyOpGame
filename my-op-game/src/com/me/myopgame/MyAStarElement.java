@@ -17,6 +17,7 @@ public class MyAStarElement {
 	public MyAStarElement previous;
 	public MyAStarElement next;
 	public int weight;
+	public boolean discoveredFlag;
 	
 	MyAStarElement() {
 		this.reset();
@@ -31,7 +32,8 @@ public class MyAStarElement {
 		this.weight = 10;
 		this.next = null;
 		this.previous = null;
-		this.state = MyAStarElement.A_PATH_ELEMENT_NEW;		
+		this.state = MyAStarElement.A_PATH_ELEMENT_NEW;	
+		this.discoveredFlag = false;
 	}
 	
     public float computeDistanceTo(MyAStarElement elem) {
