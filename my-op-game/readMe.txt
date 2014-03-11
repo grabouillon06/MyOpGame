@@ -1,4 +1,4 @@
-v0.4.0.0
+v0.5.0.0
 
 tile: 32 x 32 pixels
 world: 256 x 128 meters -> 256 x 128 tiles -> 8192 x 4096 pixels
@@ -18,21 +18,24 @@ minimap actor0_1: 2 x 2 pixel
 minimap actor0_2: 2 x 2 pixel
 
 status : 
-- complete
+- on going
 
 purpose : 
-- actor first move -> done
--- print path search metrics on screen -> done
--- print path to follow on screen -> done
--- move actor along the path -> done
-- first avoidance -> delayed to next version -> ?
-- first check of collision -> delayed to next version -> ?
+- create MyStage0 class and reorganize code around it -> done
+- insert reset mechanism -> done
+- A* algorithm
+-- replace multiple F lists by a single F list -> not valid anymore as multiple lists simplifies the sort operation
+-- revisit A* algorithm -> done -> sorted open list according to F values 
+-- renamed APathElement in AStarElement -> done
+-- added AStar class -> done
+- map visualization
+-- layer 2 and object layer are not visible
+-- only info for discovered blocks are printed on the screen
+--- manage discovered map
+
 
 remarks :
-- application screen camera : (0,0) is bottom left, camera original position is in the middle of the application screen (256,256)
-- mouse: (0,0) is top left
-- actors are instantiated and are positioned in screen reference domain
+
 
 future implementations :
-- improve move computation to avoid blocking cases -> ?
-- implements a separate path searcher independent that purpose would be to compute ALL path search of all actors of the game.
+

@@ -5,7 +5,7 @@ import com.badlogic.gdx.Game;
 public class MyOpGame extends Game {
 
 	public static final String MY_TITLE = "my-op-game";
-	public static final String MY_VERSION = "0.4.0.0";
+	public static final String MY_VERSION = "0.5.0.0";
 	public static final String LOG = "MyOpGameLog";
 	
 	public static int MY_TILE_SIZE_IN_PIXELS = 32;

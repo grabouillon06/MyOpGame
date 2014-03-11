@@ -11,39 +11,35 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 public class MyButton0 extends TextButton {
 	
 	ClickListener clickListener;
-	protected final MyScreen0 myScreen0;
+	protected final MyStage0 myStage0;
 	
-	public MyButton0(MyScreen0 screen, final String buttonName, Skin skin, String styleName, Vector2 position) {
+	public MyButton0(MyStage0 stage, final String buttonName, Skin skin, String styleName, Vector2 position) {
 				
 		super(buttonName, skin, styleName);
 		
-		this.myScreen0 = screen;
+		this.myStage0 = stage;
 		
 		clickListener = new ClickListener(){
 	            @Override 
 	            public void clicked(InputEvent event, float x, float y) {
 	            	if(buttonName == "map0")
 	            	{
-	            		myScreen0.map = new TmxMapLoader().load("map/map0.tmx");
-	            		myScreen0.renderer = new OrthogonalTiledMapRenderer(myScreen0.map);
-	            		// reset gogogo button, will force new path computation based on the new map
-	            		myScreen0.gogogo = false;
+	            		myStage0.mapDefined = true;
+	            		myStage0.screen0.map = new TmxMapLoader().load("map/map0.tmx");
+	            		myStage0.screen0.renderer = new OrthogonalTiledMapRenderer(myStage0.screen0.map);
 	            	}
 
 	            	if(buttonName == "map1")
 	            	{
-	            		myScreen0.map = new TmxMapLoader().load("map/map1.tmx");
-	            		myScreen0.renderer = new OrthogonalTiledMapRenderer(myScreen0.map);
-	            		// reset gogogo button, will force new path computation based on the new map
-	            		myScreen0.gogogo = false;
+	            		myStage0.mapDefined = true;
+	            		myStage0.screen0.map = new TmxMapLoader().load("map/map1.tmx");
+	            		myStage0.screen0.renderer = new OrthogonalTiledMapRenderer(myStage0.screen0.map);
 	            	}
 	            	if(buttonName == "go go go !!!")
-	            	{
-	            		if (myScreen0.renderer != null)
-	            		{
-	            			myScreen0.gogogo = true;
-	            		}
-	            	}
+	            		if (myStage0.screen0.renderer != null)
+	            			myStage0.gogogo = true;
+	            	if(buttonName == "reset")
+	            		myStage0.reset();
 	            };
 		};
 		this.addListener(clickListener);

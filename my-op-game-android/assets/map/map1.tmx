@@ -13,7 +13,7 @@
  </layer>
  <layer name="Tile Layer 2" width="256" height="132" opacity="0.39">
   <data encoding="base64" compression="zlib">
-   eJzt2jEKwCAQAEGb5P9PTpvCCHbBnQFBuHpFxDEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6rskCGvQPXfqHLv1Dl/6hS//QpX/oWvU/mzkn4Bz6h66drjUPZ9E/dO3e/4EG/UOX/uF8X53rH1ru117/0OL9D7r0D136hy7/f6BL/9ClfwAAAAD4lwejdwKb
+   eJzt2DsKgDAURUGbuP8l24r4Cxbx5c7Ag4AQLDwaXBYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEZpo28AGEb/kEv/kEv/kEv/kEv/kEv/UEc7ma/7ATXoH3LpH3LpH3LpH3LpH3LpH3Ld9X927ek9oX+oQ/+Qq+f8/6Zt/UMd+odcvef/N/sB9ekfcl31//RfcKaB2fV0Dsxr3a1Hf3urDVTXDmvPOOTQP+TSP+S6a1z/MDf9Qy79AwAAAMC/bL84BYk=
   </data>
  </layer>
  <objectgroup name="Object Layer 1" opacity="0.46">
@@ -23,5 +23,8 @@
   <object x="512" y="3840" width="160" height="32"/>
   <object x="608" y="3872" width="32" height="224"/>
   <object x="832" y="3680" width="32" height="416"/>
+  <object x="896" y="3808" width="1888" height="32"/>
+  <object x="864" y="3872" width="2272" height="32"/>
+  <object x="1120" y="3168" width="32" height="640"/>
  </objectgroup>
 </map>
