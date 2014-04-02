@@ -99,25 +99,25 @@ public class MyAStar {
     	int index = 0;
     	
     	// tag blocked map objects as A_PATH_ELEMENT_CLOSED
-    	//{
-	    //	MapObjects objects = this.myActor0.myStage0.screen0.map.getLayers().get("Object Layer 1").getObjects();
-	    //	for (int k = 0; k < objects.getCount(); k++ )
-	    //	{
-	    //		RectangleMapObject object = (RectangleMapObject) objects.get(k);
-	    //		for (int 	i = this.myActor0.convertInTiles((int) object.getRectangle().x); 
-	    //					i < this.myActor0.convertInTiles((int) object.getRectangle().x) + this.myActor0.convertInTiles((int) object.getRectangle().width); 
-	    //					i++ )
-	    //		{
-	    //    		for (int 	j = this.myActor0.convertInTiles((int) object.getRectangle().y); 
-	    //						j < this.myActor0.convertInTiles((int) object.getRectangle().y) + this.myActor0.convertInTiles((int) object.getRectangle().height); 
-	    //						j++ )
-	    //    		{
-	    //    			map[i][j].state = MyAStarElement.A_PATH_ELEMENT_CLOSED;
-	    //    		}
-	    //			
-	    //		}
-	    //	}
-    	//}
+    	{
+	    	MapObjects objects = this.myActor0.myStage0.screen0.map.getLayers().get("Object Layer 1").getObjects();
+	    	for (int k = 0; k < objects.getCount(); k++ )
+	    	{
+	    		RectangleMapObject object = (RectangleMapObject) objects.get(k);
+	    		for (int 	i = this.myActor0.convertInTiles((int) object.getRectangle().x); 
+	    					i < this.myActor0.convertInTiles((int) object.getRectangle().x) + this.myActor0.convertInTiles((int) object.getRectangle().width); 
+	    					i++ )
+	    		{
+	        		for (int 	j = this.myActor0.convertInTiles((int) object.getRectangle().y); 
+	    						j < this.myActor0.convertInTiles((int) object.getRectangle().y) + this.myActor0.convertInTiles((int) object.getRectangle().height); 
+	    						j++ )
+	        		{
+	        			map[i][j].state = MyAStarElement.A_PATH_ELEMENT_CLOSED;
+	        		}
+	    			
+	    		}
+	    	}
+    	}
     	
 
         // Summary of the A* Method:
@@ -267,7 +267,7 @@ public class MyAStar {
     public void drawInfo(SpriteBatch batch, float alpha) {
     	if (myActor0.targetLocked == true)
     	{
-	    	// draw element state
+    		// draw complete selected A* path
 	    	boolean lvValid = true;
 	    	if (lvValid == true) {
 	    		MyAStarElement currentElement = this.start;
@@ -280,7 +280,7 @@ public class MyAStar {
     			batch.draw(texturePath,(float)(myActor0.convertInPixels((int) currentElement.posInTiles.x)),(float)(myActor0.convertInPixels((int) currentElement.posInTiles.y)));
 	    	}
 
-	    	// draw path
+	    	// draw all path metrics detected during the search
 	    	lvValid = false;
 	    	if (lvValid == true) {
 		    	for(int i=0; i<(this.map.length); i++ ) {
@@ -301,8 +301,8 @@ public class MyAStar {
 		        }
 	    	}
 	    	
-	    	// draw discovered map
-	    	lvValid = true;
+	    	// draw current visible path metrics
+	    	lvValid = false;
 	    	if (lvValid == true) 
 	    	{
 	    		for(int i=0; i<this.discoveredElementsList.size(); i++ ) 

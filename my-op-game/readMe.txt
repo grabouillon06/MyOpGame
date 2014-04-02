@@ -28,13 +28,16 @@ purpose :
 -- revisit A* algorithm -> done -> sorted open list according to F values 
 -- renamed APathElement in AStarElement -> done
 -- added AStar class -> done
+- D* Lite algorithm
+-- imported D* Lite algorithm from daniel beard
+-- MyActor0 now follows the D* lite path
 - map visualization
 -- layer 2 and object layer are not visible
 -- only info for discovered blocks are printed on the screen -> done
 
-
 remarks :
-
+- The D* Lite is now imported in the project. In this version both A* path search and D* Lite path search exist and compute paths, 
+  nevertheless the MyActor0 follows the D* Lite path only. Reset is OK.
 
 future implementations :
 
