@@ -14,6 +14,7 @@ public class MyStage0 {
     protected MyActor0 actor0_0;
     protected MyActor0 actor0_1;
     protected MyActor0 actor0_2;
+    protected MyActor0 actor0_3;
     protected MyActor1 actor1_0;
     protected MyActor2 actor2_0;
     protected MyButton0 button0_map0;
@@ -54,9 +55,16 @@ public class MyStage0 {
         this.actor0_2 = new MyActor0(this, 27*MyOpGame.MY_TILE_SIZE_IN_PIXELS, 5*MyOpGame.MY_TILE_SIZE_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS);
         this.stage0.addActor(this.actor0_2);
         
+        // allocate actor0_3 and add to stage, actor1 is placed next to actor0 -> this is the target for now
+        this.actor0_3 = new MyActor0(this, 0*MyOpGame.MY_TILE_SIZE_IN_PIXELS, 15*MyOpGame.MY_TILE_SIZE_IN_PIXELS + MyOpGame.MY_MINIMAP_HEIGHT_IN_PIXELS);
+        this.stage0.addActor(this.actor0_3);
+
         // set target for actor0_0
         this.actor0_0.setTarget((int)(this.actor0_2.getX()),(int)(this.actor0_2.getY()));
                 
+        // set target for actor0_3
+        this.actor0_3.setTarget((int)(this.actor0_2.getX()),(int)(this.actor0_2.getY()));
+
         // allocate actor2_0 and add to stage
         this.actor2_0 = new MyActor2();
         this.actor2_0.setPosition(0, 0);
@@ -118,6 +126,7 @@ public class MyStage0 {
     	this.gogogo = false;
     	this.mapDefined = false;
     	this.actor0_0.reset();
+    	this.actor0_3.reset();
     	return;
     }
       

@@ -92,12 +92,8 @@ public class MyAStar {
         discoveredElementsList.clear();
     }
 
-    public void computePath() {
-    	
-    	MyAStarElement startElement;
-    	MyAStarElement currentElement = map[0][0];
-    	int index = 0;
-    	
+    public void registerBlockedTiles ()
+    {
     	// tag blocked map objects as A_PATH_ELEMENT_CLOSED
     	{
 	    	MapObjects objects = this.myActor0.myStage0.screen0.map.getLayers().get("Object Layer 1").getObjects();
@@ -118,7 +114,14 @@ public class MyAStar {
 	    		}
 	    	}
     	}
+
+    }
+    
+    public void computePath() {
     	
+    	MyAStarElement startElement;
+    	MyAStarElement currentElement = map[0][0];
+    	int index = 0;    	
 
         // Summary of the A* Method:
         {
@@ -264,6 +267,49 @@ public class MyAStar {
     	}
     }
 
+    public void discoverEnv()
+    {
+		for(int i=-2; i<3; i++ ) 
+		{
+			int relativeI = (int) (i+this.current.posInTiles.x);
+			for(int j=-2; j<3; j++) 
+			{
+				int relativeJ = (int) (j+this.current.posInTiles.y);
+
+            	if (	(relativeI >= 0) && (relativeJ >= 4) && 
+            			(relativeI <= MyOpGame.MY_WORLD_WIDTH_IN_TILES) && (relativeJ <= (MyOpGame.MY_WORLD_HEIGHT_IN_TILES + 4))) 
+            	{
+            		if (this.map[relativeI][relativeJ].F != -1)
+            		{
+		            	if (this.map[relativeI][relativeJ].discoveredFlag == false) 
+		            	{
+		            		this.map[relativeI][relativeJ].discoveredFlag = true;
+		            		this.discoveredElementsList.add(this.map[relativeI][relativeJ]);
+				        }
+            		}
+            	}
+			}
+		}
+
+    }
+
+    public void moveActor()
+    {
+    	if (this.current.next != null)
+    		if (((int) this.myActor0.getX() == this.myActor0.convertInPixels((int) this.current.next.posInTiles.x)) && ((int) this.myActor0.getY() == this.myActor0.convertInPixels((int) this.current.next.posInTiles.y)))
+    		{
+    			this.current = this.current.next;			
+    			//Gdx.app.log( MyOpGame.LOG,"position : x = " + this.aStar.aPathCurrent.posInTiles.x + " ("+(int) this.getX()+"), y = " + this.aStar.aPathCurrent.posInTiles.y + " ("+(int) this.getY()+"), G = " + this.aStar.aPathCurrent.G + ", H = " + this.aStar.aPathCurrent.H + ", F = " + this.aStar.aPathCurrent.F);
+    		}
+		
+        if (this.current.next != null)
+		{
+			int x = this.myActor0.convertInPixels((int) this.current.next.posInTiles.x);
+			int y = this.myActor0.convertInPixels((int) this.current.next.posInTiles.y);
+			this.myActor0.translate((float)(x - this.myActor0.convertInPixels((int) this.current.posInTiles.x))/(MyOpGame.MY_TILE_SIZE_IN_PIXELS/MyOpGame.MY_ACTOR_SPEED_FACTOR), (float)(y - this.myActor0.convertInPixels((int) this.current.posInTiles.y))/(MyOpGame.MY_TILE_SIZE_IN_PIXELS/MyOpGame.MY_ACTOR_SPEED_FACTOR));
+		}        	
+    }
+    
     public void drawInfo(SpriteBatch batch, float alpha) {
     	if (myActor0.targetLocked == true)
     	{
@@ -302,7 +348,7 @@ public class MyAStar {
 	    	}
 	    	
 	    	// draw current visible path metrics
-	    	lvValid = false;
+	    	lvValid = true;
 	    	if (lvValid == true) 
 	    	{
 	    		for(int i=0; i<this.discoveredElementsList.size(); i++ ) 
